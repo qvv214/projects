@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service editorUrl{
+    rpc Create(LongUrl) returns (ShortUrl) {}
+    rpc Get(ShortUrl) returns (LongUrl) {}
+}
+
+message LongUrl{
+    string url = 1;
+}
+
+message ShortUrl {
+    string url = 1;
+}
