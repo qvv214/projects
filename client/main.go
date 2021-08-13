@@ -4,7 +4,7 @@ import (
 	"context"
 	"flag"
 	"log"
-	client "url_shortener/proto"
+	pb "url_shortener/proto"
 
 	"google.golang.org/grpc"
 )
@@ -24,13 +24,13 @@ func main() {
 	switch flag.Arg(0) {
 	case "Create":
 		{
-			c := client.NewEditorUrlClient(conn)
-			c.Create(context.Background(), &client.LongUrl{Url: flag.Arg(1)})
+			c := pb.NewEditorUrlClient(conn)
+			c.Create(context.Background(), &pb.LongUrl{Url: flag.Arg(1)})
 		}
 	case "Get":
 		{
-			c := client.NewEditorUrlClient(conn)
-			c.Get(context.Background(), &client.ShortUrl{Url: flag.Arg(1)})
+			c := pb.NewEditorUrlClient(conn)
+			c.Get(context.Background(), &pb.ShortUrl{Url: flag.Arg(1)})
 		}
 	default:
 		{
